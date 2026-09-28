@@ -1,0 +1,1915 @@
+/* 关系 · 杂志索引风 · 继承桌面 tint / blush */
+
+#relation-screen {
+  z-index: 33;
+  background: var(--bg-device) !important;
+  color: var(--text-main);
+  font-family: "DM Sans", "Noto Sans SC", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#relation-screen .relation-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-device);
+}
+
+#relation-screen .relation-head {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  min-height: 48px;
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 6px;
+}
+
+#relation-screen .relation-head-ico {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-main);
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  opacity: 0.88;
+}
+
+#relation-screen .relation-head-ico:active {
+  opacity: 0.5;
+}
+
+#relation-screen .relation-pane--hub {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Masthead · 查岗同系，水印换 BOND */
+#relation-screen .relation-masthead {
+  position: relative;
+  padding: 12px 0 24px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+#relation-screen .relation-masthead::before {
+  content: "BOND";
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  font-family: "Space Mono", monospace;
+  font-size: clamp(2.2rem, 12vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(var(--tint-rgb), 0.07);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+body.dark #relation-screen .relation-masthead::before {
+  color: rgba(var(--tint-rgb), 0.14);
+}
+
+#relation-screen .relation-masthead-en {
+  margin: 0 0 8px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-masthead-title {
+  margin: 0 0 14px;
+  font-family: "Noto Serif SC", "Playfair Display", serif;
+  font-size: clamp(2.4rem, 10vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--text-main);
+}
+
+#relation-screen .relation-verse {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 15em;
+  padding-left: 11px;
+  border-left: 1px solid rgba(var(--blush-rgb), 0.55);
+  text-align: left;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-section-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 22px 0 4px;
+  padding: 0 2px 10px;
+  border-bottom: 1px solid var(--text-main);
+  font-family: "Space Mono", monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+#relation-screen .relation-section-label i {
+  font-style: normal;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: rgba(var(--tint-rgb), 0.85);
+}
+
+#relation-screen .relation-section-label-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#relation-screen .relation-hub-add {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: rgba(var(--tint-rgb), 0.9);
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+#relation-screen .relation-hub-add:active {
+  background: var(--text-main);
+  color: var(--bg-card);
+  border-color: var(--text-main);
+}
+
+#relation-screen .relation-feed {
+  display: flex;
+  flex-direction: column;
+}
+
+#relation-screen .relation-feed-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 28px 52px 1fr auto 22px;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    margin 0.2s ease,
+    padding 0.2s ease,
+    border-radius 0.2s ease;
+}
+
+#relation-screen .relation-feed-item:last-child {
+  border-bottom: none;
+}
+
+#relation-screen .relation-feed-item:active {
+  background: var(--text-main);
+  color: var(--bg-card);
+  margin: 0 -14px;
+  padding: 14px;
+  border-radius: 16px;
+  border-bottom-color: transparent;
+}
+
+#relation-screen .relation-feed-idx {
+  font-family: "Space Mono", monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.02em;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-feed-item:active .relation-feed-idx,
+#relation-screen .relation-feed-item:active .relation-feed-sub {
+  color: color-mix(in srgb, var(--bg-card) 52%, transparent);
+}
+
+#relation-screen .relation-av-orbit {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+#relation-screen .relation-av-orbit::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--tint-rgb), 0.28);
+  pointer-events: none;
+}
+
+#relation-screen .relation-av-orbit::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(var(--blush-rgb), 0.38);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+#relation-screen .relation-av {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(var(--tint-rgb), 0.12), rgba(var(--blush-rgb), 0.06)),
+    var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: grid;
+  place-items: center;
+}
+
+#relation-screen .relation-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#relation-screen .relation-av-ph {
+  font-family: "Playfair Display", "Noto Serif SC", serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+  color: rgba(var(--tint-rgb), 0.72);
+}
+
+#relation-screen .relation-feed-meta {
+  min-width: 0;
+}
+
+#relation-screen .relation-feed-name {
+  margin: 0 0 3px;
+  font-size: 0.92rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-feed-sub {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--text-sub);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-feed-stage {
+  flex-shrink: 0;
+  max-width: 4.8em;
+  font-family: "Space Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-align: right;
+  color: rgba(var(--tint-rgb), 0.88);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-feed-item:active .relation-feed-stage {
+  color: var(--bg-card);
+}
+
+#relation-screen .relation-feed-go {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  opacity: 0.45;
+}
+
+#relation-screen .relation-feed-item:active .relation-feed-go {
+  color: var(--bg-card);
+  opacity: 0.7;
+}
+
+#relation-screen .relation-empty {
+  margin: 28px 0 0;
+  text-align: center;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-empty[hidden] {
+  display: none !important;
+}
+
+/* 双视图 */
+#relation-screen .relation-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#relation-screen .relation-view[hidden] {
+  display: none !important;
+}
+
+#relation-screen .relation-head--graph {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+#relation-screen .relation-graph-head-name {
+  margin: 0;
+  text-align: center;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-pane--graph {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 20px calc(32px + env(safe-area-inset-bottom, 0px));
+}
+
+/* 关系网核心 · 你 — 线 — TA */
+#relation-screen .relation-graph-core {
+  position: relative;
+  margin: 4px 0 26px;
+  padding: 28px 12px 24px;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--tint-rgb), 0.1), transparent 70%),
+    linear-gradient(165deg, rgba(var(--blush-rgb), 0.06), transparent 55%),
+    var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--line);
+  overflow: hidden;
+}
+
+#relation-screen .relation-graph-core::before {
+  content: "LINK";
+  position: absolute;
+  right: -6px;
+  bottom: -10px;
+  font-family: "Space Mono", monospace;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(var(--tint-rgb), 0.05);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+#relation-screen .relation-graph-axis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+#relation-screen .relation-graph-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+#relation-screen .relation-graph-node--hero {
+  gap: 10px;
+}
+
+#relation-screen .relation-graph-node-label {
+  max-width: 4.5em;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--text-sub);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-graph-node--hero .relation-graph-node-label {
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.82rem;
+  color: var(--text-main);
+}
+
+#relation-screen .relation-av-orbit--sm {
+  width: 40px;
+  height: 40px;
+}
+
+#relation-screen .relation-av-orbit--sm::after {
+  inset: -5px;
+  opacity: 0.55;
+}
+
+#relation-screen .relation-av-orbit--hero {
+  width: 64px;
+  height: 64px;
+}
+
+#relation-screen .relation-av-orbit--hero::before {
+  inset: -3px;
+  border-width: 1.5px;
+}
+
+#relation-screen .relation-av-orbit--hero::after {
+  inset: -9px;
+}
+
+#relation-screen .relation-av--sm {
+  width: 40px;
+  height: 40px;
+}
+
+#relation-screen .relation-av--hero {
+  width: 64px;
+  height: 64px;
+}
+
+#relation-screen .relation-av--hero .relation-av-ph {
+  font-size: 1.35rem;
+}
+
+#relation-screen .relation-graph-bridge {
+  flex: 1;
+  min-width: 48px;
+  max-width: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+  align-self: flex-start;
+  margin-top: 18px;
+}
+
+#relation-screen .relation-graph-bridge-tag {
+  font-family: "Space Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: rgba(var(--tint-rgb), 0.92);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#relation-screen .relation-graph-bridge-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--tint-rgb), 0.15),
+    rgba(var(--blush-rgb), 0.55) 50%,
+    rgba(var(--tint-rgb), 0.15)
+  );
+  position: relative;
+}
+
+#relation-screen .relation-graph-bridge-line::before,
+#relation-screen .relation-graph-bridge-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(var(--blush-rgb), 0.65);
+  transform: translateY(-50%);
+}
+
+#relation-screen .relation-graph-bridge-line::before {
+  left: 0;
+}
+
+#relation-screen .relation-graph-bridge-line::after {
+  right: 0;
+}
+
+/* 阶段选择 */
+#relation-screen .relation-stage-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+#relation-screen .relation-stage-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: "DM Sans", "Noto Sans SC", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+#relation-screen .relation-stage-chip.is-on {
+  background: var(--text-main);
+  border-color: var(--text-main);
+  color: var(--bg-card);
+}
+
+#relation-screen .relation-stage-chip:active {
+  opacity: 0.82;
+}
+
+#relation-screen .relation-field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+#relation-screen .relation-field-k {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-field-input,
+#relation-screen .relation-field-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+#relation-screen .relation-field-input:focus,
+#relation-screen .relation-field-textarea:focus {
+  outline: none;
+  border-color: rgba(var(--tint-rgb), 0.45);
+}
+
+#relation-screen .relation-field-textarea {
+  min-height: 56px;
+}
+
+/* NPC 圈子 */
+#relation-screen .relation-npc-feed {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+/* 详情 · TA 焦点 */
+#relation-screen .relation-graph-hero {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+#relation-screen .relation-graph-hero .relation-graph-node {
+  gap: 10px;
+}
+
+/* 关系网 · 可视化 */
+#relation-screen .relation-web-map {
+  margin-bottom: 18px;
+}
+
+#relation-screen .relation-web-map-empty {
+  margin: 0;
+  padding: 22px 12px;
+  text-align: center;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-sub);
+  border-radius: 16px;
+  background:
+    linear-gradient(165deg, rgba(var(--tint-rgb), 0.04), transparent 60%),
+    var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+#relation-screen .relation-web-map-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 10px 16px;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(var(--tint-rgb), 0.08), transparent 70%),
+    var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+#relation-screen .relation-web-map-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#relation-screen .relation-av-orbit--map {
+  width: 52px;
+  height: 52px;
+}
+
+#relation-screen .relation-av--map {
+  width: 52px;
+  height: 52px;
+}
+
+#relation-screen .relation-web-map-center-name {
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+#relation-screen .relation-web-map-ring {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 16px;
+  width: 100%;
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(var(--blush-rgb), 0.38);
+  position: relative;
+}
+
+#relation-screen .relation-web-map-ring::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 16px;
+  background: rgba(var(--blush-rgb), 0.45);
+  transform: translate(-50%, -100%);
+}
+
+#relation-screen .relation-web-map-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 56px;
+  max-width: 72px;
+}
+
+#relation-screen .relation-web-map-node-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-device);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 0 0 2px color-mix(in srgb, var(--link-color, #8a7355) 25%, transparent);
+  display: grid;
+  place-items: center;
+  font-family: "Playfair Display", serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(var(--tint-rgb), 0.75);
+}
+
+#relation-screen .relation-web-map-node-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#relation-screen .relation-web-map-node-name {
+  font-size: 0.68rem;
+  font-weight: 650;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+#relation-screen .relation-web-map-node-kind {
+  font-family: "Space Mono", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  color: var(--link-color, rgba(var(--tint-rgb), 0.88));
+}
+
+/* 关系网 · 列表卡片 */
+#relation-screen .relation-link-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3px 24px 32px 1fr 32px;
+  gap: 10px;
+  align-items: start;
+  padding: 14px 0 14px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+#relation-screen .relation-link-card:last-child {
+  border-bottom: none;
+}
+
+#relation-screen .relation-link-card.is-unset {
+  background: rgba(var(--blush-rgb), 0.04);
+  margin: 0 -8px;
+  padding: 14px 8px 14px 12px;
+  border-radius: 12px;
+  border-bottom-color: transparent;
+}
+
+#relation-screen .relation-link-card-spine {
+  width: 3px;
+  align-self: stretch;
+  border-radius: 3px;
+  background: var(--link-color, rgba(var(--tint-rgb), 0.35));
+  opacity: 0.85;
+}
+
+#relation-screen .relation-link-card.is-unset .relation-link-card-spine {
+  background: rgba(var(--blush-rgb), 0.45);
+}
+
+#relation-screen .relation-link-card-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#relation-screen .relation-link-name {
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+#relation-screen .relation-link-kind-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#relation-screen .relation-link-kind-pill {
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--link-color, rgba(var(--tint-rgb), 0.85)) 12%, var(--bg-card));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--link-color, var(--line)) 35%, var(--line));
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: var(--link-color, rgba(var(--tint-rgb), 0.9));
+}
+
+#relation-screen .relation-link-edit,
+#relation-screen .relation-link-set-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: "Space Mono", monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+#relation-screen .relation-link-edit {
+  color: var(--text-sub);
+  opacity: 0.72;
+}
+
+#relation-screen .relation-link-set-btn {
+  color: rgba(var(--tint-rgb), 0.88);
+}
+
+#relation-screen .relation-link-edit:active,
+#relation-screen .relation-link-set-btn:active {
+  opacity: 1;
+}
+
+#relation-screen .relation-stage-grid--link {
+  margin-bottom: 12px;
+  gap: 6px;
+}
+
+#relation-screen .relation-stage-grid--link .relation-link-chip {
+  padding: 5px 10px;
+  font-size: 0.68rem;
+}
+
+#relation-screen .relation-link-detail {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font: inherit;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+#relation-screen .relation-link-detail:focus {
+  outline: none;
+  color: var(--text-main);
+}
+
+#relation-screen .relation-stage-grid--link .relation-link-chip {
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--text-sub);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+#relation-screen .relation-stage-grid--link .relation-link-chip.is-on {
+  background: var(--text-main);
+  border-color: var(--text-main);
+  color: var(--bg-card);
+}
+
+#relation-screen .relation-field--compact {
+  margin-bottom: 10px;
+}
+
+/* 设定关系弹层 */
+#relation-screen .relation-link-set {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#relation-screen .relation-link-set[hidden] {
+  display: none !important;
+}
+
+#relation-screen .relation-link-set-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#relation-screen .relation-link-set-sheet {
+  position: relative;
+  z-index: 1;
+  max-height: min(82vh, 580px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px 20px 0 0;
+  background: var(--bg-card);
+  padding: 0 18px calc(18px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.14);
+}
+
+#relation-screen .relation-link-set-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0 8px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  z-index: 1;
+}
+
+#relation-screen .relation-link-set-head h3 {
+  margin: 0;
+  font-family: "Noto Serif SC", serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#relation-screen .relation-link-set-cancel {
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  cursor: pointer;
+}
+
+#relation-screen .relation-link-set-target {
+  margin: 14px 0 4px;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+#relation-screen .relation-link-set-prompt {
+  margin: 12px 0 8px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-link-set-name-field {
+  display: block;
+  margin: 10px 0 4px;
+}
+
+#relation-screen .relation-link-set-confirm {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+  border: none;
+  border-radius: 14px;
+  background: var(--text-main);
+  color: var(--bg-card);
+  font-family: "DM Sans", "Noto Sans SC", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+#relation-screen .relation-link-set-confirm:active {
+  opacity: 0.88;
+}
+
+#relation-screen .relation-npc-av {
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(var(--tint-rgb), 0.1), rgba(var(--blush-rgb), 0.05)),
+    var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: grid;
+  place-items: center;
+  font-family: "Playfair Display", serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(var(--tint-rgb), 0.75);
+}
+
+#relation-screen .relation-npc-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#relation-screen .relation-npc-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+#relation-screen .relation-npc-tag {
+  flex-shrink: 0;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(var(--tint-rgb), 0.1);
+  font-family: "Space Mono", monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.06em;
+  color: rgba(var(--tint-rgb), 0.85);
+}
+
+#relation-screen .relation-npc-name {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+#relation-screen .relation-npc-name:focus {
+  outline: none;
+}
+
+#relation-screen .relation-npc-del {
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-sub);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#relation-screen .relation-npc-del:active {
+  opacity: 1;
+  background: rgba(var(--tint-rgb), 0.08);
+}
+
+#relation-screen .relation-npc-add {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px;
+  border: 1px dashed rgba(var(--tint-rgb), 0.35);
+  border-radius: 14px;
+  background: transparent;
+  color: rgba(var(--tint-rgb), 0.88);
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+#relation-screen .relation-npc-add-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+#relation-screen .relation-npc-add:active {
+  background: rgba(var(--tint-rgb), 0.06);
+}
+
+#relation-screen .relation-npc-add--manual {
+  border-color: var(--line);
+  color: var(--text-sub);
+}
+
+/* 角色选择器 */
+#relation-screen .relation-char-picker {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#relation-screen .relation-char-picker[hidden] {
+  display: none !important;
+}
+
+#relation-screen .relation-char-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+body.dark #relation-screen .relation-char-picker-backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#relation-screen .relation-char-picker-sheet {
+  position: relative;
+  z-index: 1;
+  max-height: min(72vh, 520px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0 0;
+  background: var(--bg-card);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+#relation-screen .relation-char-picker-head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+#relation-screen .relation-char-picker-head h3 {
+  margin: 0;
+  font-family: "Noto Serif SC", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+#relation-screen .relation-char-picker-cancel {
+  padding: 4px 0;
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+#relation-screen .relation-char-picker-hint {
+  margin: 0;
+  padding: 10px 18px 6px;
+  font-size: 0.72rem;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-char-picker-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 12px 16px;
+}
+
+#relation-screen .relation-char-picker-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+#relation-screen .relation-char-picker-item:last-child {
+  border-bottom: none;
+}
+
+#relation-screen .relation-char-picker-item:active {
+  background: rgba(var(--tint-rgb), 0.08);
+  border-radius: 12px;
+}
+
+#relation-screen .relation-char-picker-av {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(var(--tint-rgb), 0.12), rgba(var(--blush-rgb), 0.06)),
+    var(--bg-device);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: grid;
+  place-items: center;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: rgba(var(--tint-rgb), 0.75);
+}
+
+#relation-screen .relation-char-picker-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#relation-screen .relation-char-picker-meta {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#relation-screen .relation-char-picker-name {
+  font-size: 0.9rem;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-char-picker-sub {
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-char-picker-empty {
+  margin: 20px 8px;
+  text-align: center;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-npc-empty {
+  margin: 8px 0 4px;
+  text-align: center;
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-graph-hint {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--text-sub);
+  opacity: 0.75;
+}
+
+/* char↔char 私聊 */
+#relation-screen .relation-pane--interact {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+#relation-screen .relation-graph-summary-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-graph-summary-num {
+  width: 3.2rem;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.68rem;
+  text-align: center;
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+#relation-screen .relation-graph-summary-note {
+  margin: -6px 0 12px;
+  padding: 0 4px;
+  font-size: 0.62rem;
+  line-height: 1.45;
+  color: var(--text-sub);
+  opacity: 0.88;
+}
+
+#relation-screen .relation-interact-transcript {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#relation-screen .relation-interact-empty {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin: auto;
+}
+
+#relation-screen .relation-interact-segment-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 10px;
+  margin: 2px 0 6px;
+  flex-shrink: 0;
+}
+
+#relation-screen .relation-interact-segment-divider-line {
+  flex: 1;
+  height: 0;
+  border-top: 1px dashed rgba(var(--tint-rgb), 0.35);
+}
+
+#relation-screen .relation-interact-segment-divider-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-sub);
+  opacity: 0.82;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-head-ico:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#relation-screen .relation-interact-msg-name {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+
+#relation-screen .relation-interact-msg-bubble {
+  display: inline-block;
+  max-width: 88%;
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+}
+
+#relation-screen .relation-interact-msg--peer .relation-interact-msg-bubble {
+  background: rgba(var(--tint-rgb), 0.06);
+}
+
+#relation-screen .relation-interact-msg--user .relation-interact-msg-bubble {
+  border-color: rgba(var(--blush-rgb, 168, 67, 82), 0.25);
+}
+
+#relation-screen .relation-interact-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+
+#relation-screen .relation-interact-continue {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid rgba(var(--tint-rgb), 0.4);
+  border-radius: 12px;
+  background: var(--bg-card);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+#relation-screen .relation-link-dm-btn {
+  margin-left: 8px;
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+
+/* ── 关系网 API / AI 整理 ── */
+#relation-screen .relation-settings-api-meta,
+#relation-screen .relation-api-entry-meta {
+  margin: 0 0 12px;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-graph-ai-row {
+  margin: 0 0 12px;
+}
+
+#relation-screen .relation-ai-organize-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border: 1px solid rgba(var(--tint-rgb), 0.35);
+  border-radius: 12px;
+  background: rgba(var(--tint-rgb), 0.08);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  color: inherit;
+}
+
+#relation-screen .relation-ai-organize-btn.is-busy {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+#relation-screen .relation-api-sheet-scroll {
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 18px 8px;
+}
+
+#relation-screen .relation-api-sheet-hint,
+#relation-screen .relation-api-key-note,
+#relation-screen .relation-api-status {
+  margin: 6px 0 10px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-ai-select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-card);
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+#relation-screen .relation-api-temp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 14px;
+  font-size: 0.8125rem;
+}
+
+#relation-screen .relation-api-temp-row input[type="range"] {
+  flex: 1;
+}
+
+#relation-screen .relation-ai-preview-sheet .relation-link-set-head {
+  margin-bottom: 4px;
+}
+
+#relation-screen .relation-ai-preview-target {
+  margin: 0;
+  padding: 0 18px 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+#relation-screen .relation-ai-preview-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 12px 12px;
+}
+
+#relation-screen .relation-ai-preview-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+
+#relation-screen .relation-ai-preview-item:last-child {
+  border-bottom: none;
+}
+
+#relation-screen .relation-ai-preview-check {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+#relation-screen .relation-ai-preview-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+#relation-screen .relation-ai-preview-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#relation-screen .relation-ai-preview-name {
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+#relation-screen .relation-ai-preview-badge {
+  font-size: 0.6875rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+#relation-screen .relation-ai-preview-badge--new {
+  background: rgba(90, 138, 106, 0.15);
+  color: #3d6b52;
+}
+
+#relation-screen .relation-ai-preview-badge--update {
+  background: rgba(201, 107, 74, 0.15);
+  color: #9a4a32;
+}
+
+#relation-screen .relation-ai-preview-rel {
+  margin: 4px 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-ai-preview-detail {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-ai-preview-tag {
+  margin: 6px 0 0;
+  font-size: 0.6875rem;
+  color: var(--text-sub);
+  opacity: 0.85;
+}
+
+#relation-screen .relation-ai-preview-empty {
+  margin: 0;
+  padding: 12px 18px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+  text-align: center;
+}
+
+#relation-screen .relation-ai-preview-sheet {
+  max-height: min(88vh, 640px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 关系网后台互动 ── */
+#relation-screen .relation-bg-settings {
+  margin-top: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+
+#relation-screen .relation-bg-settings--sheet {
+  margin-top: 4px;
+}
+
+#relation-screen .relation-settings-section-k {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-settings-divider {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+#relation-screen .relation-settings-save-api {
+  margin-top: 12px;
+}
+
+#relation-screen .relation-bg-interval-block {
+  margin: 12px 0;
+}
+
+#relation-screen .relation-bg-interval-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+#relation-screen .relation-bg-interval-chip {
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+
+#relation-screen .relation-bg-interval-chip.is-active {
+  border-color: rgb(var(--tint-rgb));
+  color: rgb(var(--tint-rgb));
+  background: rgba(var(--tint-rgb), 0.08);
+}
+
+#relation-screen .relation-bg-interval-fixed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-bg-interval-fixed[hidden] {
+  display: none !important;
+}
+
+#relation-screen .relation-bg-cast-block {
+  margin: 12px 0;
+}
+
+#relation-screen .relation-bg-cast-hint {
+  margin: 4px 0 8px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-bg-cast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+#relation-screen .relation-bg-cast-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-card);
+  cursor: pointer;
+}
+
+#relation-screen .relation-bg-cast-row.is-on {
+  border-color: rgb(var(--tint-rgb));
+  background: rgba(var(--tint-rgb), 0.06);
+}
+
+#relation-screen .relation-bg-cast-row input {
+  flex-shrink: 0;
+  accent-color: rgb(var(--tint-rgb));
+}
+
+#relation-screen .relation-bg-cast-av {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(
+    145deg,
+    hsl(var(--rel-av-h, 200), 48%, 58%),
+    hsl(var(--rel-av-h, 200), 38%, 42%)
+  );
+}
+
+#relation-screen .relation-bg-cast-av--img {
+  padding: 0;
+  overflow: hidden;
+  background: var(--line);
+}
+
+#relation-screen .relation-bg-cast-av--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#relation-screen .relation-bg-cast-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#relation-screen .relation-bg-cast-empty {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+  text-align: center;
+}
+
+#relation-screen .relation-bg-settings-hint {
+  margin: 8px 0 12px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-bg-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#relation-screen .relation-bg-toggle-input {
+  width: 18px;
+  height: 18px;
+  accent-color: rgb(var(--tint-rgb));
+}
+
+#relation-screen .relation-bg-cooldown-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+#relation-screen .relation-bg-num-input {
+  width: 64px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+}
+
+.relation-bg-notify {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  pointer-events: none;
+}
+
+.relation-bg-notify[hidden] {
+  display: none !important;
+}
+
+.relation-bg-notify.is-open {
+  pointer-events: auto;
+}
+
+.relation-bg-notify-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.42);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.relation-bg-notify.is-open .relation-bg-notify-backdrop {
+  opacity: 1;
+}
+
+.relation-bg-notify-card {
+  position: relative;
+  width: min(100%, 320px);
+  padding: 22px 20px 18px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  transform: translateY(12px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.relation-bg-notify.is-open .relation-bg-notify-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.relation-bg-notify-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #fce7f3, #fbcfe8);
+  color: #be185d;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+}
+
+.relation-bg-notify-title {
+  margin: 0 0 8px;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  color: #111827;
+}
+
+.relation-bg-notify-desc {
+  margin: 0 0 18px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #6b7280;
+}
+
+.relation-bg-notify-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.relation-bg-notify-btn {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: #f5f5f7;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.relation-bg-notify-btn--primary {
+  border-color: transparent;
+  background: #111827;
+  color: #fff;
+}
